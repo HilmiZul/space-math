@@ -17,6 +17,10 @@ let hit = false;
 let timer = 59;
 let gameOver = false;
 let theme_song;
+let rekam;
+
+rekam = new p5.SpeechRec();
+rekam.continuous = true;
 
 function preload() {
 	sfxPop = loadSound("assets/sfx/pop.mp3");
@@ -32,6 +36,28 @@ function setup() {
 		bidangs.push(new Bidang());
 	}
 	theme_song.loop();
+
+	rekam.onResult = showResult;
+	rekam.start();
+}
+
+function showResult() {
+	console.log(rekam.resultString);
+	console.log(rekam.resultConfidence);
+	if (rekam.resultString == 'right') {
+		rocket.right = true;
+		rekam.resultString = '';
+	} else if (rekam.resultString == 'left') {
+		rocket.left = true;
+		rekam.resultString = '';
+	} else if (rekam.resultString == 'fire') {
+		if (!gameOver) {
+			fire = true;
+			sfxFire.play();
+			bullets.push(new Bullet(rocket.pos.x + rocket.alas / 2, rocket.pos.y - rocket.tinggi));
+		}
+	} 	
+
 }
 
 function draw() {
