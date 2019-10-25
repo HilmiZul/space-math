@@ -2,10 +2,10 @@ class Rocket {
   constructor() {
     this.reset();
   }
-
+  
   reset() {
     this.pos = createVector(width / 2, height - 100);
-    this.step = 15;
+    this.step = 50;
     this.tinggi = 50;
     this.alas = 30;
     this.left = false;
@@ -26,12 +26,14 @@ class Rocket {
   move() {
     if (this.right) {
       this.pos.x = this.pos.x + this.step;
+      this.right = false;
     }
     if (this.down) {
       this.pos.y = this.pos.y + this.step;
     }
     if (this.left) {
       this.pos.x = this.pos.x - this.step;
+      this.left = false;
     }
     if (this.up) {
       this.pos.y = this.pos.y - this.step;
