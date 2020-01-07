@@ -1,9 +1,5 @@
 class Rocket {
   constructor() {
-    this.reset();
-  }
-  
-  reset() {
     this.pos = createVector(width / 2, height - 100);
     this.step = 50;
     this.tinggi = 50;

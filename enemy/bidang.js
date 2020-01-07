@@ -1,9 +1,5 @@
 class Bidang {
   constructor() {
-    this.reset();
-  }
-
-  reset() {
     this.pos = createVector(random(width), 0 - random(500));
     this.r = random(30, 70);
     this.step = random(0.5, 1.2);
